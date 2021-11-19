@@ -1,4 +1,4 @@
-% apersquare.m
+function [ap,b1,b2,b3,i1,i2] = apersquare(apl,si1)
 % Daniel Breault, Jonathan Lai, Sam O'Connor
 % OPT 211 Final Project
 % 4/19/20
@@ -6,13 +6,15 @@
 % To construct the square aperture, run far-field diffraction,
 % and plot the relevant figures
 
+% apl = size of the aperture field
+% si1 = side length of the square
+
 % Define Aperture field
-apl=5000; % Size of the aperture field
 ap=zeros(apl); % Define actual aperture plane
 
-
 % Create the aperture using the inputted width and height
-ap(round(1+apl/2-500/2):round(1+apl/2+500/2),round(1+apl/2-500/2):round(1+apl/2+500/2))=1;
+ap(round(1+apl/2-si1/2):round(1+apl/2+si1/2),...
+    round(1+apl/2-si1/2):round(1+apl/2+si1/2))=1;
 
 % Figure 1: Plotting the Aperture Field
 figure(1)
@@ -34,5 +36,4 @@ b1=6; % Lower z axis bound of the full field graph
 b2=87; % Upper bound of both graphs
 b3=12; % Lower bound of the zoomed in graph 
 
-% Calls the aperture runner function to plot 4 graphs
-aperrun(i2,apl,b1,b2,b3,i1)
+aperrun(i2, apl, b1, b2, b3, i1)

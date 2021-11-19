@@ -1,4 +1,4 @@
-% aperslit.m
+function [ap,b1,b2,b3,i1,i2] = aperslit(apl,si1,si2)
 % Daniel Breault, Jonathan Lai, Sam O'Connor
 % OPT 211 Final Project
 % 4/19/20
@@ -6,14 +6,16 @@
 % To construct the single slit aperture, run far-field diffraction,
 % and plot the relevant figures
 
-% Define Aperture field
-apl=5000; % Size of the aperture field
+% ap1 = size of the aperture field
+% si1 = height of the slit
+% si2 = width of the slit
+
 ap=zeros(apl); % Define actual aperture plane
 
 
 % Create the aperture using the inputted width and height
-ap(round(1+apl/2-2500/2):round(1+apl/2+2500/2),round(1+apl/2-200/2):...
-    round(1+apl/2+200/2))=1;
+ap(round(1+apl/2-si1/2):round(1+apl/2+si1/2),round(1+apl/2-si2/2):...
+    round(1+apl/2+si2/2))=1;
 
 % Plot the aperture field
 figure(1)
@@ -37,5 +39,4 @@ b1=1; % Lower z axis bound of the full field graph
 b2=8; % Upper z axis bound of both graphs
 b3=3; % Lower bound of the zoomed in graph
 
-% Calls the aperture runner function to plot 2 graphs
-aperrun(i2,apl,b1,b2,b3,i1) 
+aperrun(i2, apl, b1, b2, b3, i1)

@@ -1,4 +1,5 @@
-% apercircle.m
+function [ap,b1,b2,b3,i1,i2] = apercircle(apl,si1)
+
 % Daniel Breault, Jonathan Lai, Sam O'Connor
 % OPT 211 Final Project
 % 4/19/20
@@ -6,19 +7,18 @@
 % To construct the circular aperture, run far-field diffraction,
 % and plot the relevant figures
 
-% Define Aperture field
-apl=5000; % Size of the aperture field
-ap=zeros(apl); % Define actual aperture plane
+% apl = size of the aperture field
+% si1 = radius of the circular aperture
 
-% Define bounds of Aperture
-r=275; % Radius of Aperture
+% Define Aperture field
+ap=zeros(apl); % Define actual aperture plane
 
 % Painting vertical strips from the bottom of the circle to the top
 % via the equation y=sqrt(r^2-x^2)
 
-for ijk=round(1+apl/2-r):round(1+apl/2+r)
- for lmn=real(round(1+apl/2-sqrt(r^2-(2500-ijk)^2))):real(round...
-         (1+apl/2+sqrt(r^2-(2500-ijk)^2)))
+for ijk=round(1+apl/2-si1):round(1+apl/2+si1)
+ for lmn=real(round(1+apl/2-sqrt(si1^2-(apl/2-ijk)^2))):real(round...
+         (1+apl/2+sqrt(si1^2-(apl/2-ijk)^2)))
  ap(ijk,lmn)=1;
  end
 end

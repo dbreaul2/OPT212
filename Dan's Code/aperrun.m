@@ -30,7 +30,7 @@ xlabel('Length [Pixels]')
 ylabel('Width [Pixels]')
 
 % Cut the matrix i2 Down to the Middle 250 x 250
-i3=i2(2375:2625, 2375:2625);
+i3=i2(apl/2-125:apl/2+125, apl/2-125:apl/2+125);
 
 % Figure 3: Plotting Zoomed in Diffraction Pattern
 figure(3)
@@ -49,7 +49,7 @@ ylabel('Width [Pixels]')
 % Plot the horizontal cross-section
 figure(4) 
 x=linspace(0,250,251); % Define the x-axis to plot along
-y1=i1(2500,2375:2625); % Take the middle row of the unscaled intensity
+y1=i1(apl/2,apl/2-125:apl/2+125); % Take the middle row of the unscaled intensity
 plot(x,y1,'linewidth',2) % Plot the intensity of the middle row of pixels
 xlim([0 250]) % Set x-axis limit to the middle 250
 xlabel('Length [Pixels]')
@@ -58,7 +58,7 @@ title('Horizontal Cross-Section')
 
 % Plot the vertical cross-section
 figure(5)
-y2=i1(2375:2625,2500); % Take the middle column of the unscaled intensity
+y2=i1(apl/2-125:apl/2+125,apl/2); % Take the middle column of the unscaled intensity
 plot(x,y2,'linewidth',2) % Plot the intensity of the middle column of pixels
 xlim([0 250]) % Set x-axis limit to the middle 250
 xlabel('Width [Pixels]')

@@ -1,4 +1,4 @@
-% apertriangle.m
+function apertriangle(apl,si1)
 % Daniel Breault, Jonathan Lai, Sam O'Connor
 % OPT 211 Final Project
 % 4/19/20
@@ -6,16 +6,15 @@
 % To construct the right triangle aperture, run far-field diffraction,
 % and plot the relevant figures
 
+% apl = size of the aperture field
+% si1 = side length of the triangle
+
 % Define Aperture field
-apl=5000; % Size of the aperture field
 ap=zeros(apl); % Define actual aperture plane
 
-% Define bounds of Aperture
-sil=1500; % Side Length of Aperture
-
 % Painting vertical strips from the base to the slope lmn=ijk
-for ijk=round(1+apl/2-sil/2):round(1+apl/2+sil/2)
- for lmn=round(1+apl/2-sil/2):round(ijk)
+for ijk=round(1+apl/2-si1/2):round(1+apl/2+si1/2)
+ for lmn=round(1+apl/2-si1/2):round(ijk)
  ap(ijk,lmn)=1;
  end
 end
@@ -40,9 +39,6 @@ b1=0; % Lower z axis bound of full field graph
 b2=150; % Upper z axis bound of both graphs
 b3=10;% Lower bound of the zoomed in graph
 
-% Calls the aperture runner function to plot 4 graphs
-aperrun(i2,apl,b1,b2,b3,i1) 
-
 % Plot the diagonal cross-section
 figure(6) 
 x=linspace(0,250,251); % Set the x-axis from 0 to 250 pixels
@@ -57,3 +53,5 @@ xlim([0 250]) % Set x-axis limit to maximize data readability
 xlabel('Width [Pixels]')
 ylabel('Intensity [Arb. units]')
 title('Diagonal Cross Section')
+
+aperrun(i2, apl, b1, b2, b3, i1)
